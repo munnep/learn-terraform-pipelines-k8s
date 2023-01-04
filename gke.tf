@@ -11,6 +11,8 @@ resource "google_container_cluster" "engineering" {
   initial_node_count       = 1
   
   ip_allocation_policy {}
+  # added by patrick
+  node_version = "1.21.5-gke.1300"
 }
 
 resource "google_container_node_pool" "engineering_preemptible_nodes" {
