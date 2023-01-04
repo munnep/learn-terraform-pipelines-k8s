@@ -19,7 +19,7 @@ resource "google_container_cluster" "engineering" {
   ip_allocation_policy {}
   # added by patrick
   node_version = data.google_container_engine_versions.central1b.latest_node_version
-  min_master_version = data.google_container_engine_versions.central1b.latest_node_version
+  # min_master_version = data.google_container_engine_versions.central1b.latest_node_version
 }
 
 resource "google_container_node_pool" "engineering_preemptible_nodes" {
