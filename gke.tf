@@ -1,5 +1,11 @@
 data "google_compute_zones" "available" {}
 
+data "google_container_engine_versions" "central1b" {
+  location       = data.google_compute_zones.available.names.0
+  version_prefix = "1.20."
+}
+
+
 resource "google_container_cluster" "engineering" {
   name     = var.cluster_name
   location = data.google_compute_zones.available.names.0
@@ -12,8 +18,8 @@ resource "google_container_cluster" "engineering" {
   
   ip_allocation_policy {}
   # added by patrick
-  node_version = "1.21.5-gke.1300"
-  min_master_version = "1.21"
+  node_version = data.google_container_engine_versions.central1b.latest_node_version
+  min_master_version = data.google_container_engine_versions.central1b.latest_node_version
 }
 
 resource "google_container_node_pool" "engineering_preemptible_nodes" {
