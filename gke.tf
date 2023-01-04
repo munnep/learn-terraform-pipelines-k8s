@@ -18,8 +18,8 @@ resource "google_container_cluster" "engineering" {
   
   ip_allocation_policy {}
   # added by patrick 1.21.11-gke.1900
-  node_version = "1.20.15-gke.13700"
-  min_master_version = "1.20.15-gke.13700"
+  node_version = "1.21.14-gke.8500"
+  min_master_version = "1.21.14-gke.8500"
   
   
 #   node_version = data.google_container_engine_versions.central1b.latest_master_version
